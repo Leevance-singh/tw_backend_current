@@ -44,7 +44,7 @@ const addTask = async (req, res) => {
     if (savedTask) {
       try {
         await userModel.findByIdAndUpdate(
-          { userId },
+          { _id: user.id },
           {
             $push: { mytasks: savedTask._id },
           }
