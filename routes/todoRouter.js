@@ -13,6 +13,7 @@ router.post("/signup",authController.signupUser);
 router.get('/login',authController.loginUser);
 router.post("/addTask",authMiddleware.verifyUser,taskController.addTask);
 router.post("/updateTask",authMiddleware.verifyUser,taskController.updateTask);
+router.post("/deleteTask",authMiddleware.verifyUser,taskController.disableTask)
 router.post("/addSection",authMiddleware.verifyUser,taskController.addNewSection);
 
 module.exports =router

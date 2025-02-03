@@ -1,6 +1,6 @@
 // Schema for task
 const mongoose = require("mongoose"); //firstly require the module moongose its third party which we had installed
-// Define a separate schema for progress to track updatedAt
+// Defining a separate schema for progress to track updatedAt
 const progressSchema = new mongoose.Schema({
   currProgress: { type: Number, min: 0, max: 10, default: 0 }
 }, { timestamps: { createdAt: false, updatedAt: true } }); // Only updatedAt will be tracked
