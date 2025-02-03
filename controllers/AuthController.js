@@ -1,6 +1,7 @@
 const { comparePassword } = require("./bcrypt");
 const { makeToken } = require("./token");
 const userModel = require("../models/userSchema");
+
 const loginUser = async (req, res) => {
   console.log("inside /login");
   if (validator.isEmail(req.body.email)) {
@@ -34,10 +35,12 @@ const loginUser = async (req, res) => {
     res.status(200).json({ message: "User not found" });
   }
 };
+
 const logoutUser = (req, res) => {
   res.clearCookie("mycookie");
   res.status(200).json({ message: "Logged out successfully" });
 };
+
 const signupUser = async (req, res) => {
   try {
     const existingUser = await userModel.findOne({ email: req.body.email });
