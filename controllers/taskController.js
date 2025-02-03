@@ -27,8 +27,7 @@ const addTask = async (req, res) => {
     taskDescription,
     section,
     currentProgress,
-    assignDate,
-    dueDate,
+    priority,
     comments,
   } = req.body;
   try {
@@ -37,8 +36,7 @@ const addTask = async (req, res) => {
       taskDescription,
       section,
       currentProgress,
-      assignDate,
-      dueDate,
+      priority,
       comments,
       userId
     });
