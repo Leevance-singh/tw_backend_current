@@ -34,14 +34,14 @@ const User = new mongoose.Schema({
   assignedTasks: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "tasks",
+      ref: "assignTasks",
     },
   ],
   sections: [
     {
       type: String,
       unique: true,
-      default:['todo','inProgress','completed']
+      default: ["todo", "inProgress", "completed"],
     },
   ],
 });
