@@ -2,6 +2,7 @@
 const nodemailer = require("nodemailer");
 
 async function sendEmail(mail) {
+
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
@@ -10,6 +11,7 @@ async function sendEmail(mail) {
       pass: "iqlzsuaskkywxmng",
     },
   });
+
   let otp = await getRandomFourDigit();
 
   let info = await transporter.sendMail(
@@ -28,6 +30,7 @@ async function sendEmail(mail) {
   );
   return otp.toString();
 }
+
 function getRandomFourDigit() {
   return Math.floor(1000 + Math.random() * 9000);
 }

@@ -3,6 +3,7 @@ const { makeToken } = require("./token");
 const userModel = require("../models/userSchema");
 const otpModel = require("../models/otpSchema");
 const { sendEmail } = require("./MailAuth");
+const validator = require("validator");
 
 let otpContainer = new Object();
 
@@ -22,7 +23,7 @@ const verifyEmail = async (req, res) => {
     await otpStored.save();
     res.status(200).json({ message: "Otp Sent", success: true });
   } catch (error) {
-    console.log("Error saving Otp: ", err);
+    console.log("Error saving Otp: ", error);
     res.status(500).json({ message: "Otp Sent Failed", success: false });
   }
 };
@@ -59,7 +60,7 @@ const loginUser = async (req, res) => {
       console.log(err);
     }
   } else {
-    res.status(200).json({ message: "User not found", success: false });
+    res.status(400).json({ message: "User not found", success: false });
   }
 };
 
@@ -76,6 +77,11 @@ const signupUser = async (req, res) => {
     .findOne({ email })
     .sort({ createdAt: -1 })
     .limit(1);
+
+    if (!otpData) {
+      return res.status(400).json({ success: false, message: "OTP not found in the Database!" });
+    }    
+
   if (otpData.email == email && otpData.otp == otp) {
     try {
       const password = await bcryptPassword(req.body.password);
