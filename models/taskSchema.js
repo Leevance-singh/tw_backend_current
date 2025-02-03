@@ -46,7 +46,8 @@ const tasks = new mongoose.Schema({
   isDisable:{
     type:Boolean,
     default:false
-  }
-},{timestamps:true});
+  },
+  timestamps:true
+});
 const taskModel = mongoose.model("tasks", tasks);
 module.exports = taskModel;
