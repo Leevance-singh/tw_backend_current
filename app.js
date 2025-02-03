@@ -7,13 +7,14 @@ require('dotenv').config();
 const cors = require("cors");
 
 //..................................Middleware's setup
+app.use(cors({
+    origin: '*',
+}));
 app.use(cookieParser());
 app.use(express.static("/public"));
 app.use(express.urlencoded());
 app.use(todoRouter);
-app.use(cors({
-    origin: '*',
-}));
+
 
 app.use((req, res, next) => {
   console.log("----request.method :", req.method);

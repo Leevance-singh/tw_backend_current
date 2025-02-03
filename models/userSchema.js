@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 mongoose
-  .connect(process.env.DB_URL)
+  .connect("mongodb://localhost:27017/TodoDashboard")
   .then(() => {
     console.log("mongoDB connected");
   })
