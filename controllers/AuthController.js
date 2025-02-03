@@ -4,7 +4,6 @@ const userModel = require("../models/userSchema");
 const otpModel = require("../models/otpSchema");
 const { sendEmail } = require("./MailAuth");
 
-let otpContainer = new Object();
 
 const verifyEmail = async (req, res) => {
   const { email } = req.body;
