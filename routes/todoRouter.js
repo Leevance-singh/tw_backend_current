@@ -7,6 +7,7 @@ const taskController = require("../controllers/taskController");
 const {verifyUser} = require("../middlewares/Authenticate");
 
 
+router.get('/',test);
 router.get('/login',authController.loginUser);
 router.post("/addTask",verifyUser,taskController.addTask);
 router.post("/addSection",verifyUser,taskController.addNewSection)
