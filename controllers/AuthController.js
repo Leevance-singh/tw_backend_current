@@ -70,11 +70,10 @@ const logoutUser = (req, res) => {
 const signupUser = async (req, res) => {
   console.log("/signup");
   const { otp, username, email } = req.body;
-
+  //  Sorts documents by createdAt in descending order (latest first).
   const otpData = await otpModel
     .findOne({ email })
-    .sort({ createdAt: -1 })
-    .limit(1);
+    .sort({ createdAt: -1 });
   if (otpData.email == email && otpData.otp == otp) {
     try {
       const password = await bcryptPassword(req.body.password);
