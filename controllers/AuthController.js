@@ -33,7 +33,7 @@ const loginUser = async (req, res) => {
     try {
       var user = await userModel
         .findOne({ email: req.body.email })
-        .populate([{ path: "mytasks" }, { path: "assignedTasks" }]);
+        .populate([{ path: "mytasks",match:{ isDisable: false } }, { path: "assignedTasks",match:{isDisable:false} }]);
       // console.log(user);
       if (user) {
         let check = await comparePassword(req.body.password, user.password); //compare bcrypt pswrd to plain pssword
