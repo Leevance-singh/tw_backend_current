@@ -3,7 +3,9 @@ const { makeToken } = require("./token");
 const userModel = require("../models/userSchema");
 const otpModel = require("../models/otpSchema");
 const { sendEmail } = require("./MailAuth");
+
 let otpContainer = new Object();
+
 const verifyEmail = async (req, res) => {
   const { email } = req.body;
   const existingUser = await userModel.findOne({ email: email });
@@ -24,6 +26,7 @@ const verifyEmail = async (req, res) => {
     res.status(500).json({ message: "Otp Sent Failed", success: false });
   }
 };
+
 const loginUser = async (req, res) => {
   console.log("inside /login");
   if (validator.isEmail(req.body.email)) {
