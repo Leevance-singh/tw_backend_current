@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const assignedTasks = require("./assignedTaskSchema")
 mongoose
   .connect("mongodb://localhost:27017/TodoDashboard")
   .then(() => {

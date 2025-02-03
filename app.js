@@ -8,11 +8,13 @@ const cors = require("cors");
 
 //..................................Middleware's setup
 app.use(cors({
-    origin: '*',
+    origin:"http://localhost:5173",
+    credentials:true
 }));
+app.use(express.json());
 app.use(cookieParser());
 app.use(express.static("/public"));
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 app.use(todoRouter);
 
 
