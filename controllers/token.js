@@ -2,14 +2,8 @@
 // create token for user and get user details from token for verification
 const jwt = require("jsonwebtoken");
 const secret = process.env.JWT_SECRET;
-function makeToken(userObj,verifyEmail=false) {
+function makeToken(userObj) {
   // console.log("token",userObj);
-  if(verifyEmail){
-    const payload ={
-      email:userObj.email
-    }
-    return jwt.sign(payload, secret, { expiresIn: "1 m"});
-  }
   const payload = {
     email: userObj.email,
     id: userObj._id,
