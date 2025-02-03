@@ -74,8 +74,7 @@ const signupUser = async (req, res) => {
   //  Sorts documents by createdAt in descending order (latest first).
   const otpData = await otpModel
     .findOne({ email })
-    .sort({ createdAt: -1 })
-    .limit(1);
+    .sort({ createdAt: -1 });
 
     if (!otpData) {
       return res.status(400).json({ success: false, message: "OTP not found in the Database!" });
