@@ -7,7 +7,7 @@ const validator = require("validator");
 
 
 const verifyEmail = async (req, res) => {
-  console.log("/verify",req.body.email);
+  console.log("/verify",req.body);
   const { email } = req.body;
   const existingUser = await userModel.findOne({ email: email });
   if (existingUser) {
@@ -71,17 +71,18 @@ const logoutUser = (req, res) => {
 
 const signupUser = async (req, res) => {
   console.log("/signup");
-  const { otp, username, email } = req.body;
+  console.log(req.body);
+  const { otpNumber, username, email } = req.body;
   //  Sorts documents by createdAt in descending order (latest first).
   const otpData = await otpModel
     .findOne({ email })
     .sort({ createdAt: -1 });
-
+  console.log("OtpData",otpData);
     if (!otpData) {
       return res.status(400).json({ success: false, message: "OTP not found in the Database!" });
     }    
 
-  if (otpData.email == email && otpData.otp == otp) {
+  if (otpData.email == email && otpData.otp == otpNumber) {
     try {
       const password = await bcryptPassword(req.body.password);
       const newUser = new userModel({

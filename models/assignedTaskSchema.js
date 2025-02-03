@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const assignTasks = new mongoose.Schema({
+const assignTasksSchema = new mongoose.Schema({
   assignerId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
@@ -17,5 +17,5 @@ const assignTasks = new mongoose.Schema({
     ref: "tasks",
   }]
 });
-const assignModel = mongoose.model("assignTasks", assignTasks);
-module.exports = assignModel;
+const assignTasks = mongoose.model("assignTasks", assignTasksSchema);
+module.exports = assignTasks;
