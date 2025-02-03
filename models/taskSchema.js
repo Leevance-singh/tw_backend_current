@@ -22,14 +22,6 @@ const tasks = new mongoose.Schema({
     max: 10,
     default: 0,
   },
-  assignDate: {
-    type: Date,
-    required: true,
-  },
-  dueDate: {
-    type: Date,
-    required: true,
-  },
   comments: [
     {
       username: {
@@ -47,6 +39,12 @@ const tasks = new mongoose.Schema({
     type:Boolean,
     default:false
   },
+  Priority:{
+    type:Number,
+    min:1,
+    max:10,
+    default:1
+  }
 },{ timestamps:true});
 const taskModel = mongoose.model("tasks", tasks);
 module.exports = taskModel;
