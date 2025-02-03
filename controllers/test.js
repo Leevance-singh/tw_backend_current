@@ -1,5 +1,5 @@
 const sample = async (req,res)=>{
-    res.send("Hello From Route!!");
+    res.send("Hello From Root !");
 }
 module.exports={
     sample
