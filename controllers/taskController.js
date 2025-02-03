@@ -39,6 +39,7 @@ const addTask = async (req, res) => {
       assignDate,
       dueDate,
       comments,
+      userId
     });
     const savedTask = await newTask.save();
     if (savedTask) {
