@@ -60,6 +60,44 @@ const addTask = async (req, res) => {
     res.status(500).json({ error: "Failed to add task" });
   }
 };
+
+
+// update existing task
+const updateTask = async (req, res) => {
+  const {
+    taskId,
+    tasktitle,
+    taskDescription,
+    section,
+    currentProgress,
+    priority,
+    comments,
+  } = req.body;
+  try {
+    const newTask = await taskModel.findByIdAndUpdate(
+      taskId,
+      {
+        tasktitle,
+        taskDescription,
+        section,
+        currentProgress,
+        priority,
+        comments,
+      },
+      { new: true }
+    );
+    if (newTask) {
+      res
+        .status(200)
+        .json({message: "Task updated successfully",success:true});
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Failed to add task",success:false});
+  }
+};
+
+
 // add a new section to existing sections 
 const addNewSection =async()=>{
   const user = getUser(req.cookies.mycookie);
@@ -81,6 +119,6 @@ const addNewSection =async()=>{
 
 }
 module.exports={
-    addTask,addNewSection
+    addTask,addNewSection,updateTask
     // getTasks
 }
