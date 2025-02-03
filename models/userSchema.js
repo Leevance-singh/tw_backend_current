@@ -7,6 +7,7 @@ mongoose
   .catch((err) => {
     console.log("MongoDB is not connected:", err);
   });
+
 const User = new mongoose.Schema({
   username: {
     type: String,
@@ -45,6 +46,7 @@ const User = new mongoose.Schema({
     },
   ],
 });
+
 // Commonly used for validations , checking documents before saving
 User.pre("save", function (next) {
   //this refres to mongoose document
