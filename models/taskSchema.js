@@ -39,7 +39,7 @@ const tasks = new mongoose.Schema({
     type:Boolean,
     default:false
   },
-  Priority:{
+  priority:{
     type:Number,
     min:1,
     max:10,
