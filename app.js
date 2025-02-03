@@ -12,7 +12,7 @@ app.use(cors({
 }));
 app.use(cookieParser());
 app.use(express.static("/public"));
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 app.use(todoRouter);
 
 

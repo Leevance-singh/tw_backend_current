@@ -7,6 +7,7 @@ const validator = require("validator");
 
 
 const verifyEmail = async (req, res) => {
+  console.log("/verify",req.body.email);
   const { email } = req.body;
   const existingUser = await userModel.findOne({ email: email });
   if (existingUser) {
