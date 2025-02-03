@@ -61,7 +61,6 @@ const addTask = async (req, res) => {
   }
 };
 
-
 // update existing task
 const updateTask = async (req, res) => {
   const {
@@ -96,7 +95,6 @@ const updateTask = async (req, res) => {
     res.status(500).json({ error: "Failed to add task",success:false});
   }
 };
-
 
 // disable the task 
 const disableTask = async (req, res) => {
@@ -133,6 +131,7 @@ const addNewSection =async()=>{
   }
 
 }
+
 module.exports={
     addTask,addNewSection,updateTask,disableTask
     // getTasks
