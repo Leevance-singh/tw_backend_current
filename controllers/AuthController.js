@@ -5,7 +5,6 @@ const otpModel = require("../models/otpSchema");
 const { sendEmail } = require("./MailAuth");
 const validator = require("validator");
 
-let otpContainer = new Object();
 
 const verifyEmail = async (req, res) => {
   const { email } = req.body;
@@ -72,7 +71,7 @@ const logoutUser = (req, res) => {
 const signupUser = async (req, res) => {
   console.log("/signup");
   const { otp, username, email } = req.body;
-
+  //  Sorts documents by createdAt in descending order (latest first).
   const otpData = await otpModel
     .findOne({ email })
     .sort({ createdAt: -1 })
